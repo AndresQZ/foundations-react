@@ -1,0 +1,23 @@
+.flexContainer {
+ display: flex;
+ flex-wrap: wrap;
+ flex-direction: row;
+}
+
+.flexItem {
+    flex: 1 1 200px;
+}
+
+div > div.flexContainer {
+    flex: 1 1 200px; 
+    border: 1px red solid;
+}
+
+
+div:hover.flexItem {
+    background-color: rgba(244, 210, 106, 0.852);
+}
+
+div.flexContainer p {
+   color: chocolate; 
+}
