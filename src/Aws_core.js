@@ -19,6 +19,3 @@ function AwsCore() {
      <p> Selected Item :::  {selectedItem}</p>
   </div>
 }
-
-
-export default AwsCore

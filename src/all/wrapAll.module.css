@@ -1,0 +1,46 @@
+.customColor {
+    color: DodgerBlue;
+    padding: 40px;
+    font-family: Sans-Serif;
+    text-align: center;
+  }
+
+
+  .flexboxLayoutSystem {
+    display: flex;
+    flex-direction: row;
+  }
+
+  div[data-flex-wrap="true"] {
+    flex-wrap: wrap;
+  }
+
+  .flexboxLayoutSystem > div {
+    flex: 1 0 auto
+  }
+
+  section {
+    padding: 5px 5px;
+    border: 3px solid burlywood
+
+  }
+
+
+  /* Grid layout system */
+  .child { 
+    grid-column: 1 / 3;
+    grid-row: 2
+  }
+
+
+  /* section div {
+
+    background-color: greenyellow;
+  } */
+
+  section > div {
+
+    background-color: rgb(222, 228, 231);
+    font-weight: bold;
+
+  }
