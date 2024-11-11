@@ -1,5 +1,6 @@
 import  React, { useCallback, useEffect, useMemo, useReducer, useRef, useState } from "react"
 import styles from './wrapAll.module.css'; 
+import {OrderedList } from './../component/OrderedList'
 
 
 const layoutSystemNames = new Map([
@@ -708,6 +709,7 @@ const HarryPotterWorld = () => {
       <button onClick={dataHandler}>Fetch Data</button>
       <button onClick={simulateErrorHandler }>Simulate error</button>
       {reactElement}
+      <OrderedList></OrderedList>
     </>
 
 }
