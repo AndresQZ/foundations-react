@@ -5,6 +5,7 @@ import { useEffect,  useReducer,  useState } from 'react';
 import BasicComponent from './BasicComponent';
 import ComplexComponent from './ComplextComponent';
 import NestedComponent from './NestedComponent'
+import  {FiniteStateMachine}  from '../FiniteStateMachine/FinisteStateMachine';
 
 
 const data = {
@@ -19,6 +20,16 @@ const data = {
 const Foundations = () => {
     const [dataProp, setDataProp] = useState(data)
     const [displayedComponent, setDisplayedComponent] = useState(0)
+
+    const components = new Map(
+      [
+        [1, <BasicComponent />],
+        [2, <ComplexComponent complexProp={dataProp} simpleProp={"HowToGetTheMostOutOfThis"} inlineProp={{phrasalVerb: "step out of", count: 1}}/>],
+        [3, <NestedComponent biggerVal="3"/>],
+        [4, <UseEffectComponent />],
+        [5, <FiniteStateMachine />]
+      ]
+    )
 
     
     const handlerSortAsc = (book, book1) => {
@@ -44,34 +55,23 @@ const Foundations = () => {
         const options = 
          <>
            <button onClick={() => setDisplayedComponent(1)}>BasicComponent</button>
-           <button onClick={() => setDisplayedComponent(2)}>NestedComponent</button>
-           <button onClick={() => setDisplayedComponent(3)}>useEffect</button>
-           <button onClick={() => setDisplayedComponent(4)}>ComplexComponent</button>
+           <button onClick={() => setDisplayedComponent(2)}>ComplexComponent</button>
+           <button onClick={() => setDisplayedComponent(3)}>NestedComponent</button>
+           <button onClick={() => setDisplayedComponent(4)}>useEffect</button>
+           <button onClick={() => setDisplayedComponent(5)}>FinisteStateMachine</button>
         </>
-      
-
-    let visualComponent = null;
-    
-    switch (displayedComponent) {
-      case 1:
-        visualComponent =  <BasicComponent/>
-        break;
-      case 2: 
-      visualComponent =  <NestedComponent biggerVal="3"/>
-      break;
-      case 4: 
-      visualComponent =  <ComplexComponent complexProp={dataProp} simpleProp={"HowToGetTheMostOutOfThis"} inlineProp={{phrasalVerb: "step out of", count: 1}}/>
-      break;
-      case 3: 
-      visualComponent = <UseEffectComponent/>
-      break;
-    }
+  
 
     return (
       <>
-        {options}
-        {visualComponent}
+        <section>
+          react components flavors
+          <div>
+            {options}
+            {components.get(displayedComponent)}
 
+          </div>
+        </section>
       </>
     )
 

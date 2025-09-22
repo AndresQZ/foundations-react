@@ -16,8 +16,13 @@ import HarryPotterWorld from './all/HarryPotterWorld'
 
 
 const reducerHandler = (state, attribute, payload) => {
+  let resetedState = {}
+  for(const attribute in state) {
+    resetedState[attribute] = false 
+  }
+
   return {
-    ...state,
+    ...resetedState,
     [attribute]: payload
   }
 }
@@ -93,25 +98,41 @@ const initData  = {
 
 
 function App() {
-
-
   const [state, dispatch] = useReducer(enhanceReducer,initData)
   //const [state, dispatch] = useReducer(reducer,initData)
   console.log(`render App`)
+
+  const reactComponents = new Map(
+    [
+      ['foundations', <Foundations />],
+      ['interview', <HarryPotterWorld />],
+      ['state', <ShareData />],
+      ['reducer', <GetHappy />],
+      ['context', <Main />],
+      ['contextReducer', <ContextReducer />],
+      ['signals', <Signals />]
+    ]
+  )
+
+  const selectedComponent = {
+    backgroundColor: '#ea8b4cff',
+    color: 'white',
+    borderRadius: '5px',
+    cursor: 'pointer'
+  }
 
 
   return (
     <div className="App" >
 
       <div>
-        <button onClick={()=> dispatch({type: 'foundations', payload: !state.isFoundations })}> {state.isFoundations ? `Hide foundations feature` : `Show foundations feature`} </button>
-        <button onClick={()=> dispatch({type: 'interview', payload: !state.isInterview})}> {state.isInterview ? `Hide State feature`: `Show Interview feature`}</button>
-        <button onClick={()=> dispatch({type: 'state', payload: !state.isLearningState } )}> {state.isLearningState ? `Hide State feature` : `Show State feature`} </button>
-        <button onClick={()=> dispatch({type: 'reducer', payload: !state.isReducer })}> {state.isReducer ? `Hide Reducer feature` : `Show Reducer feature`} </button>
-        <button onClick={()=> dispatch({type: 'context', payload: !state.isContext })}> {state.isContext ? `Hide Context feature` : `Show Context feature`} </button>
-        <button onClick={()=> dispatch({type: 'contextReducer', payload: !state.isContextReducer })}> {state.isContextReducer ? `Hide ContextReducer feature` : `Show ContextReducer feature`} </button>
-        <button onClick={()=> dispatch({type: 'signals', payload: !state.isSignals })}> {state.isSignals ? `Hide Signals feature` : `Show Signals feature`} </button>
-
+        <button style={state.isFoundations ? selectedComponent: null} onClick={()=> dispatch({type: 'foundations', payload: !state.isFoundations })}> {state.isFoundations ? `Hide foundations feature` : `Show foundations feature`} </button>
+        <button style={state.isInterview ? selectedComponent: null}  onClick={()=> dispatch({type: 'interview', payload: !state.isInterview})}> {state.isInterview ? `Hide State feature`: `Show Interview feature`}</button>
+        <button style={state.isLearningState ? selectedComponent: null}  onClick={()=> dispatch({type: 'state', payload: !state.isLearningState } )}> {state.isLearningState ? `Hide State feature` : `Show State feature`} </button>
+        <button style={state.isReducer ? selectedComponent: null}  onClick={()=> dispatch({type: 'reducer', payload: !state.isReducer })}> {state.isReducer ? `Hide Reducer feature` : `Show Reducer feature`} </button>
+        <button style={state.isContext ? selectedComponent: null}  onClick={()=> dispatch({type: 'context', payload: !state.isContext })}> {state.isContext ? `Hide Context feature` : `Show Context feature`} </button>
+        <button style={state.isContextReducer ? selectedComponent: null}  onClick={()=> dispatch({type: 'contextReducer', payload: !state.isContextReducer })}> {state.isContextReducer ? `Hide ContextReducer feature` : `Show ContextReducer feature`} </button>
+        <button style={state.isSignals ? selectedComponent: null} onClick={()=> dispatch({type: 'signals', payload: !state.isSignals })}> {state.isSignals ? `Hide Signals feature` : `Show Signals feature`} </button>
       </div>
 
     

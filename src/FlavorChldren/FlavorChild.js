@@ -2,12 +2,12 @@ export const Wrap = ({children, ...rest}) =>  {
 
     return (
         <div style={{background: "#f0f5f5"}}>
-            A simple wrap with a child component
-            <p>
-            ----------------------
+            <h3>A simple wrap with a child component </h3> 
+            <div>
+        ---------------------------------------------------------------
             {children}
-            -----------------------
-            </p>
+        ---------------------------------------------------------------
+            </div>
         </div>
     )
 }
